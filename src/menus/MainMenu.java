@@ -1,7 +1,6 @@
 package menus;
 
 import survival.worlds.CityWorld;
-import worms.menus.WormMenu;
 import org.newdawn.slick.Color;
 
 
@@ -13,7 +12,7 @@ public class MainMenu extends Menu{
 		super.setTitrePrincipal("INSERER TITRE ICI");
 		super.setTitreSecondaire("SOUS TITRE");
 
-		super.setItems("Worms 3000","Survival","Quitter");
+		super.setItems("Survival","Quitter");
 		//super.setItems(World1.GAME_NAME,World2.GAME_NAME,World3.GAME_NAME,"Scores", "Quitter");
 
 		super.setEnableClignote(false);
@@ -28,13 +27,9 @@ public class MainMenu extends Menu{
 			//appeler le reset du world du jeu correspondant
 			//puis faire un game.enterState(ID du world, transition de sortie comme new FadeOutTransition(),
 			//											 transition d'entree comme new FadeInTransition())
-			game.enterState(WormMenu.ID);
+			game.enterState(CityWorld.ID);
 			break;
 		case 1:
-			game.enterState(CityWorld.ID);
-
-			break;
-		case 2:
 			System.out.println("exit");
 			System.exit(0);
 			break;
