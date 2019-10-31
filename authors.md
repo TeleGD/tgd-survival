@@ -5,5 +5,5 @@
 - leterrierM (@leterrierM)
 - Mehdi Akkari (@MedhiTheMedoc)
 - Rémi Marie-Jeanne (@renim-j)
-- Stefan Morel--Doridat (@stephanVonCarstein)
+- Stefan Morel--Doridat (@stefanVonCarstein)
 - Victor Thevenon (@victorthevenon)
