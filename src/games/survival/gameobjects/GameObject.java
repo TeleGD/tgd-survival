@@ -1,4 +1,4 @@
-package survival.gameobjects;
+package games.survival.gameobjects;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -6,9 +6,9 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import survival.Camera;
-import survival.utils.Vector2;
-import survival.worlds.World;
+import games.survival.Camera;
+import games.survival.utils.Vector2;
+import games.survival.World;
 
 public abstract class GameObject {
 

@@ -1,13 +1,9 @@
-package survival.gameobjects.gameplay;
+package games.survival.gameobjects.gameplay;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-import org.newdawn.slick.Color;
-import org.newdawn.slick.tests.xml.Item;
-
-import survival.gameobjects.GameObject;
-import survival.gameobjects.items.Items;
+import games.survival.gameobjects.GameObject;
+import games.survival.gameobjects.items.Items;
 
 public class Player extends GameObject {
 	public static ArrayList<Items> itemList = new ArrayList<Items>();

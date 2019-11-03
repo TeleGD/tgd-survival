@@ -1,4 +1,4 @@
-package survival.gameobjects.gameplay;
+package games.survival.gameobjects.gameplay;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -6,10 +6,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import survival.Camera;
-import survival.gameobjects.GameObject;
-import survival.input.CustomInput;
-import survival.utils.Vector2;
+import games.survival.Camera;
+import games.survival.utils.Vector2;
 
 public class Character extends MoveableGameObject{
 
@@ -38,6 +36,7 @@ public class Character extends MoveableGameObject{
 		walkSpeed = wlkspeed;
 	}
 
+	@Override
 	public void hurt(float damage)
 	{
 		if(this instanceof Infected){
@@ -100,6 +99,7 @@ public class Character extends MoveableGameObject{
 	}
 
 
+	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) throws SlickException
 	{
 		float xx = location.x - boundingBox.x;

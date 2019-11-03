@@ -1,14 +1,13 @@
-package survival.gameobjects.items;
-
-import survival.gameobjects.GameObject;
-import survival.gameobjects.gameplay.Player;
-import survival.utils.Vector2;
-import survival.worlds.World;
+package games.survival.gameobjects.items;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
+
+import games.survival.gameobjects.GameObject;
+import games.survival.utils.Vector2;
+import games.survival.World;
 
 public abstract class Items extends GameObject {
 
@@ -37,6 +36,7 @@ public abstract class Items extends GameObject {
 		// objet rammassé par joueur --> inventaire
 	}
 
+	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
 	{
 		if(onGround && isCollidingWithSomething())

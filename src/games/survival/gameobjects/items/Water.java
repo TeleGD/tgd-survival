@@ -1,10 +1,9 @@
-package survival.gameobjects.items;
-
-import survival.gameobjects.gameplay.TestObject;
-import survival.utils.Vector2;
-import survival.worlds.World;
+package games.survival.gameobjects.items;
 
 import org.newdawn.slick.Image;
+
+import games.survival.utils.Vector2;
+import games.survival.World;
 
 public class Water extends Items {
 
@@ -18,6 +17,7 @@ public class Water extends Items {
 	}
 
 	//the action that made the item
+	@Override
 	public void action()
 	{
 		World.activePlayer.thirst.canAdd(amount);

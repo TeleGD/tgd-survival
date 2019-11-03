@@ -1,8 +1,9 @@
-package survival.gameobjects.items;
+package games.survival.gameobjects.items;
 
-import survival.gameobjects.gameplay.Player;
-import survival.utils.Vector2;
 import org.newdawn.slick.Image;
+
+import games.survival.gameobjects.gameplay.Player;
+import games.survival.utils.Vector2;
 
 public class Pistol extends Items {
 
@@ -18,6 +19,7 @@ public class Pistol extends Items {
 		this.ammo = ammo;
 	}
 
+	@Override
 	public void action() {
 		// Tir à distance
 	}

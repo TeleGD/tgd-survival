@@ -1,8 +1,9 @@
-package survival.gameobjects.mapping;
+package games.survival.gameobjects.mapping;
 
 import org.newdawn.slick.Image;
-import survival.gameobjects.GameObject;
-import survival.utils.Vector2;
+
+import games.survival.gameobjects.GameObject;
+import games.survival.utils.Vector2;
 
 public class MapObject extends GameObject{
 

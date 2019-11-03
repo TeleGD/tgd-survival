@@ -1,9 +1,4 @@
-package survival.utils;
-
-import org.newdawn.slick.AppGameContainer;
-import org.newdawn.slick.SlickException;
-
-import survival.worlds.CityWorld;
+package games.survival.utils;
 
 public class Utils
 {

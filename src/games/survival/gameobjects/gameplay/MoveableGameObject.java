@@ -1,12 +1,12 @@
-package survival.gameobjects.gameplay;
+package games.survival.gameobjects.gameplay;
 
 import java.util.ArrayList;
 
 import org.newdawn.slick.Image;
 
-import survival.gameobjects.GameObject;
-import survival.utils.Vector2;
-import survival.worlds.World;
+import games.survival.gameobjects.GameObject;
+import games.survival.utils.Vector2;
+import games.survival.World;
 
 public class MoveableGameObject extends GameObject {
 

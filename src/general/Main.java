@@ -1,8 +1,6 @@
 package general;
 
-import java.io.File;
-
-import survival.worlds.CityWorld;
+import games.survival.CityWorld;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;

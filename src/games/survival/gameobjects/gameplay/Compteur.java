@@ -1,4 +1,4 @@
-package survival.gameobjects.gameplay;
+package games.survival.gameobjects.gameplay;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -6,9 +6,9 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import survival.Camera;
-import survival.gameobjects.GameObject;
-import survival.utils.Vector2;
+import games.survival.Camera;
+import games.survival.gameobjects.GameObject;
+import games.survival.utils.Vector2;
 
 public class Compteur extends GameObject{
 
@@ -42,6 +42,7 @@ public class Compteur extends GameObject{
 		return(true);
 	}
 
+	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) throws SlickException
 	{
 		super.render(container, game, g, useCamera);

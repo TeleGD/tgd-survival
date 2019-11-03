@@ -1,4 +1,4 @@
-package survival.gameobjects.gameplay;
+package games.survival.gameobjects.gameplay;
 
 import java.util.ArrayList;
 
@@ -7,13 +7,13 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import survival.Camera;
-import survival.SurvivalMain;
-import survival.gameobjects.GameObject;
-import survival.gameobjects.items.Items;
-import survival.input.CustomInput;
-import survival.utils.Vector2;
-import survival.worlds.World;
+import games.survival.Camera;
+import games.survival.CityWorld;
+import games.survival.gameobjects.GameObject;
+import games.survival.gameobjects.items.Items;
+import games.survival.input.CustomInput;
+import games.survival.utils.Vector2;
+import games.survival.World;
 
 public class TestObject extends Character{
 
@@ -31,11 +31,11 @@ public class TestObject extends Character{
 		super(spr, 5);
 		itemList = new ArrayList<Items> ();
 		this.nextPostionUI = new Vector2(140,690);
-		health = new Compteur(100,100, new Vector2(200,650), new Vector2(10,11),new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/barre.png"), new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/healthbar.png"));
+		health = new Compteur(100,100, new Vector2(200,650), new Vector2(10,11),new Image(CityWorld.DIRECTORY_IMAGES + "ui/barre.png"), new Image(CityWorld.DIRECTORY_IMAGES + "ui/healthbar.png"));
 		World.activeWorld.addUiGameObject(health);
-		hunger = new Compteur(30,100, new Vector2(500,650), new Vector2(10,11),new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/barre.png"), new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/hungrybar.png"));
+		hunger = new Compteur(30,100, new Vector2(500,650), new Vector2(10,11),new Image(CityWorld.DIRECTORY_IMAGES + "ui/barre.png"), new Image(CityWorld.DIRECTORY_IMAGES + "ui/hungrybar.png"));
 		World.activeWorld.addUiGameObject(hunger);
-		thirst = new Compteur(80,100, new Vector2(800,650), new Vector2(10,11),new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/barre.png"), new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/waterbar.png"));
+		thirst = new Compteur(80,100, new Vector2(800,650), new Vector2(10,11),new Image(CityWorld.DIRECTORY_IMAGES + "ui/barre.png"), new Image(CityWorld.DIRECTORY_IMAGES + "ui/waterbar.png"));
 		World.activeWorld.addUiGameObject(thirst);
 
 		location = new Vector2(0, 0);
@@ -54,6 +54,7 @@ public class TestObject extends Character{
 
 	}
 
+	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
 	{
 		Vector2 moveDirection = new Vector2(0,0);

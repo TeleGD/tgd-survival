@@ -1,6 +1,6 @@
 package menus;
 
-import survival.worlds.CityWorld;
+import games.survival.CityWorld;
 import org.newdawn.slick.Color;
 
 

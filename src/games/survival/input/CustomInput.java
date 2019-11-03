@@ -1,4 +1,4 @@
-package survival.input;
+package games.survival.input;
 
 import org.newdawn.slick.Input;
 

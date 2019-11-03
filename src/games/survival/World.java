@@ -1,6 +1,5 @@
-package survival.worlds;
+package games.survival;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import org.newdawn.slick.GameContainer;
@@ -9,12 +8,12 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import survival.gameobjects.GameObject;
-import survival.gameobjects.gameplay.Character;
-import survival.gameobjects.gameplay.TestObject;
-import survival.input.CustomInput;
+import games.survival.gameobjects.GameObject;
+import games.survival.gameobjects.gameplay.TestObject;
+import games.survival.input.CustomInput;
 
 public abstract class World extends BasicGameState {
+
 	public static World activeWorld;
 	public static TestObject activePlayer;
 
@@ -61,6 +60,7 @@ public abstract class World extends BasicGameState {
 
 	}
 
+	@Override
 	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException
 	{
 		for(GameObject i : backgrounds)
@@ -73,11 +73,13 @@ public abstract class World extends BasicGameState {
 			i.render(container, game, g, false);
 	}
 
+	@Override
 	public void keyPressed(int key, char c)
 	{
 		CustomInput.keyPressed(key, c);
 	}
 
+	@Override
 	public void keyReleased(int key, char c)
 	{
 		CustomInput.keyReleased(key, c);

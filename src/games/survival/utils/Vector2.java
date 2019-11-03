@@ -1,4 +1,4 @@
-package survival.utils;
+package games.survival.utils;
 
 public class Vector2
 {

@@ -1,13 +1,13 @@
-package survival.gameobjects.gameplay;
+package games.survival.gameobjects.gameplay;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import survival.SurvivalMain;
-import survival.utils.Vector2;
-import survival.worlds.World;
+import games.survival.CityWorld;
+import games.survival.utils.Vector2;
+import games.survival.World;
 
 public class Infected extends Character{
 
@@ -21,7 +21,7 @@ public class Infected extends Character{
 
 	public Infected(Image spr,Vector2 location ,float wlkspeed, float rnspeed) throws SlickException {
 		super(spr, wlkspeed);
-		health = new Compteur(100,100, location, new Vector2(10,11),null, new Image(SurvivalMain.DIRECTORY_IMAGES + "ui/healthbar.png"));
+		health = new Compteur(100,100, location, new Vector2(10,11),null, new Image(CityWorld.DIRECTORY_IMAGES + "ui/healthbar.png"));
 		health.globalDelta = new Vector2(0,-100);
 		World.activeWorld.addGameObject(health);
 		this.wlkspeed = wlkspeed;
@@ -30,6 +30,7 @@ public class Infected extends Character{
 		runspeed = rnspeed;
 	}
 
+	@Override
 	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
 	{
 		Vector2 moveDirection = new Vector2(0,0);
@@ -66,7 +67,7 @@ public class Infected extends Character{
 			if(collisionOn.equals(World.activePlayer))
 			{
 				playerSpotted = true;
-				World.activePlayer.hurt((float)arg2/100f);
+				World.activePlayer.hurt(arg2/100f);
 			}
 
 			if((collisionOn instanceof Infected)== false )
