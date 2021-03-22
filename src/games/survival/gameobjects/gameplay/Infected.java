@@ -2,12 +2,12 @@ package games.survival.gameobjects.gameplay;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.survival.CityWorld;
-import games.survival.utils.Vector2;
+import app.AppLoader;
+
 import games.survival.World;
+import games.survival.utils.Vector2;
 
 public class Infected extends Character{
 
@@ -19,11 +19,11 @@ public class Infected extends Character{
 	protected float runspeed;
 	protected float wlkspeed;
 
-	public Infected(Image spr,Vector2 location ,float wlkspeed, float rnspeed) throws SlickException {
-		super(spr, wlkspeed);
-		health = new Compteur(100,100, location, new Vector2(10,11),null, new Image(CityWorld.DIRECTORY_IMAGES + "ui/healthbar.png"));
+	public Infected(World world, Image spr,Vector2 location ,float wlkspeed, float rnspeed) {
+		super(world, spr, wlkspeed);
+		health = new Compteur(world, 100,100, location, new Vector2(10,11),null, AppLoader.loadPicture("/images/survival/ui/healthbar.png"));
 		health.globalDelta = new Vector2(0,-100);
-		World.activeWorld.addGameObject(health);
+		world.addGameObject(health);
 		this.wlkspeed = wlkspeed;
 		this.location = location;
 		this.old_location = new Vector2(location.x, location.y);
@@ -31,8 +31,7 @@ public class Infected extends Character{
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
-	{
+	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) {
 		Vector2 moveDirection = new Vector2(0,0);
 
 
@@ -40,7 +39,7 @@ public class Infected extends Character{
 		if(playerSpotted)
 		{
 			walkSpeed = runspeed;
-			moveDirection = new Vector2(World.activePlayer.location.x - location.x,  World.activePlayer.location.y - location.y);
+			moveDirection = new Vector2(world.player.location.x - location.x,  world.player.location.y - location.y);
 		}else
 		{
 			walkSpeed = wlkspeed;
@@ -64,10 +63,10 @@ public class Infected extends Character{
 
 		if(isCollidingWithSomething())
 		{
-			if(collisionOn.equals(World.activePlayer))
+			if(collisionOn.equals(world.player))
 			{
 				playerSpotted = true;
-				World.activePlayer.hurt(arg2/100f);
+				world.player.hurt(arg2/100f);
 			}
 
 			if((collisionOn instanceof Infected)== false )
@@ -79,8 +78,8 @@ public class Infected extends Character{
 
 	public boolean playerInSight()
 	{
-		float deltax = World.activePlayer.location.x - location.x;
-		float deltay = World.activePlayer.location.y - location.y;
+		float deltax = world.player.location.x - location.x;
+		float deltay = world.player.location.y - location.y;
 
 		switch(direction)
 		{

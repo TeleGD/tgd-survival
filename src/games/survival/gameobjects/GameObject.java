@@ -3,46 +3,45 @@ package games.survival.gameobjects;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.survival.Camera;
-import games.survival.utils.Vector2;
 import games.survival.World;
+import games.survival.utils.Vector2;
 
 public abstract class GameObject {
 
+	protected World world;
 	protected Image sprite;
 	public Vector2 location;
 	public Vector2 boundingBox;
 	protected GameObject collisionOn;
 
-	public GameObject()
+	public GameObject(World world)
 	{
+		this.world = world;
 		sprite = null;
 		boundingBox = null;
 		location = new Vector2(0,0);
 	}
 
-	public GameObject(Image spr)
+	public GameObject(World world, Image spr)
 	{
+		this.world = world;
 		sprite = spr;
 		if(spr != null)
 			boundingBox = new Vector2(spr.getWidth(), spr.getHeight());
 		location = new Vector2(0,0);
 	}
 
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
-	{
+	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) {
 
 	}
 
-	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) throws SlickException
-	{
+	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) {
 		if(sprite != null)
 		{
 			if(useCamera)
-				g.drawImage(sprite, location.x - Camera.location.x - sprite.getWidth()/2, location.y - Camera.location.y- sprite.getHeight()/2);
+				g.drawImage(sprite, location.x - world.camera.location.x - sprite.getWidth()/2, location.y - world.camera.location.y- sprite.getHeight()/2);
 			else
 				g.drawImage(sprite, location.x - sprite.getWidth()/2, location.y- sprite.getHeight()/2);
 		}
@@ -69,7 +68,7 @@ public abstract class GameObject {
 
 	protected boolean isCollidingWithSomething()
 	{
-		for(GameObject i : World.activeWorld.getObjectList())
+		for(GameObject i : world.getObjectList())
 		{
 			if(isCollidingWith(i) != null)
 			{
@@ -86,8 +85,8 @@ public abstract class GameObject {
 
 	}
 
-	public static void destroy(GameObject obj) {
-		World.deleteObjects.add(obj);
+	public void destroy(GameObject obj) {
+		world.deleteObjects.add(obj);
 	}
 
 	public Vector2 isCollidingWith(GameObject other)

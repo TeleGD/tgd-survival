@@ -3,10 +3,9 @@ package games.survival.gameobjects.gameplay;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.survival.Camera;
+import games.survival.World;
 import games.survival.utils.Vector2;
 
 public class Character extends MoveableGameObject{
@@ -29,8 +28,8 @@ public class Character extends MoveableGameObject{
 	 * @param spr
 	 * @param wlkspeed
 	 */
-	public Character(Image spr, float wlkspeed) {
-		super(spr);
+	public Character(World world, Image spr, float wlkspeed) {
+		super(world, spr);
 		location = new Vector2(0, 0);
 		boundingBox = new Vector2(50,80);
 		walkSpeed = wlkspeed;
@@ -100,15 +99,14 @@ public class Character extends MoveableGameObject{
 
 
 	@Override
-	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) throws SlickException
-	{
+	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) {
 		float xx = location.x - boundingBox.x;
 		float yy = location.y- boundingBox.y;
 
 		if(useCamera)
 		{
-			xx -= Camera.location.x;
-			yy -= Camera.location.y;
+			xx -= world.camera.location.x;
+			yy -= world.camera.location.y;
 		}
 
 		if(sprite != null)

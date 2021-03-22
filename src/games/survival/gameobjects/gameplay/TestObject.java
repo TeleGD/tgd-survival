@@ -4,16 +4,15 @@ import java.util.ArrayList;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.survival.Camera;
-import games.survival.CityWorld;
+import app.AppLoader;
+
+import games.survival.World;
 import games.survival.gameobjects.GameObject;
 import games.survival.gameobjects.items.Items;
 import games.survival.input.CustomInput;
 import games.survival.utils.Vector2;
-import games.survival.World;
 
 public class TestObject extends Character{
 
@@ -26,17 +25,16 @@ public class TestObject extends Character{
 	public Compteur thirst;
 	protected Items activatedWeapons;
 
-	public TestObject(Image spr) throws SlickException
-	{
-		super(spr, 5);
+	public TestObject(World world, Image spr) {
+		super(world, spr, 5);
 		itemList = new ArrayList<Items> ();
 		this.nextPostionUI = new Vector2(140,690);
-		health = new Compteur(100,100, new Vector2(200,650), new Vector2(10,11),new Image(CityWorld.DIRECTORY_IMAGES + "ui/barre.png"), new Image(CityWorld.DIRECTORY_IMAGES + "ui/healthbar.png"));
-		World.activeWorld.addUiGameObject(health);
-		hunger = new Compteur(30,100, new Vector2(500,650), new Vector2(10,11),new Image(CityWorld.DIRECTORY_IMAGES + "ui/barre.png"), new Image(CityWorld.DIRECTORY_IMAGES + "ui/hungrybar.png"));
-		World.activeWorld.addUiGameObject(hunger);
-		thirst = new Compteur(80,100, new Vector2(800,650), new Vector2(10,11),new Image(CityWorld.DIRECTORY_IMAGES + "ui/barre.png"), new Image(CityWorld.DIRECTORY_IMAGES + "ui/waterbar.png"));
-		World.activeWorld.addUiGameObject(thirst);
+		health = new Compteur(world, 100,100, new Vector2(200,650), new Vector2(10,11),AppLoader.loadPicture("/images/survival/ui/barre.png"), AppLoader.loadPicture("/images/survival/ui/healthbar.png"));
+		world.addUiGameObject(health);
+		hunger = new Compteur(world, 30,100, new Vector2(500,650), new Vector2(10,11),AppLoader.loadPicture("/images/survival/ui/barre.png"), AppLoader.loadPicture("/images/survival/ui/hungrybar.png"));
+		world.addUiGameObject(hunger);
+		thirst = new Compteur(world, 80,100, new Vector2(800,650), new Vector2(10,11),AppLoader.loadPicture("/images/survival/ui/barre.png"), AppLoader.loadPicture("/images/survival/ui/waterbar.png"));
+		world.addUiGameObject(thirst);
 
 		location = new Vector2(0, 0);
 		sprite = spr;
@@ -46,7 +44,7 @@ public class TestObject extends Character{
 		System.out.println("fghjr");
 		itemList.add(item);
 		this.nextPostionUI.add(new Vector2(70,0));
-		World.activeWorld.addUiGameObject(item);
+		world.addUiGameObject(item);
 	}
 
 	public void removeItem(Items Item) {
@@ -55,8 +53,7 @@ public class TestObject extends Character{
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException
-	{
+	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) {
 		Vector2 moveDirection = new Vector2(0,0);
 		if(CustomInput.up)
 			moveDirection.y -= 1;
@@ -116,7 +113,7 @@ public class TestObject extends Character{
 
 		}
 
-		Camera.follow(location, 5, arg2);
+		world.camera.follow(location, 5, arg2);
 
 		updateCollisionData();
 	}

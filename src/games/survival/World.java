@@ -4,7 +4,6 @@ import java.util.LinkedList;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -14,18 +13,16 @@ import games.survival.input.CustomInput;
 
 public abstract class World extends BasicGameState {
 
-	public static World activeWorld;
-	public static TestObject activePlayer;
+	public static int longueur = 1280;
+	public static int hauteur = 720;
 
-	public static LinkedList<GameObject> objects;
-	public static LinkedList<GameObject> deleteObjects ;
+	public Camera camera;
+	public TestObject player;
+
+	public LinkedList<GameObject> objects;
+	public LinkedList<GameObject> deleteObjects ;
 	protected LinkedList<GameObject> uiobjects;
 	protected LinkedList<GameObject> backgrounds;
-
-	public World()
-	{
-
-	}
 
 	public void addGameObject(GameObject obj)
 	{
@@ -45,7 +42,7 @@ public abstract class World extends BasicGameState {
 	}
 
 	@Override
-	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) throws SlickException {
+	public void update(GameContainer arg0, StateBasedGame arg1, int arg2) {
 		for(GameObject i : objects)
 			i.update(arg0, arg1, arg2);
 		for(GameObject i : uiobjects)
@@ -61,8 +58,7 @@ public abstract class World extends BasicGameState {
 	}
 
 	@Override
-	public void render(GameContainer container, StateBasedGame game, Graphics g) throws SlickException
-	{
+	public void render(GameContainer container, StateBasedGame game, Graphics g) {
 		for(GameObject i : backgrounds)
 			i.render(container, game, g, true);
 

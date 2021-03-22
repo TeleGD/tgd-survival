@@ -3,10 +3,9 @@ package games.survival.gameobjects.gameplay;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
-import games.survival.Camera;
+import games.survival.World;
 import games.survival.gameobjects.GameObject;
 import games.survival.utils.Vector2;
 
@@ -18,8 +17,8 @@ public class Compteur extends GameObject{
 	public Vector2 globalDelta;
 	protected Image fillSprite;
 
-	public Compteur(float currentValue, float maxValue, Vector2 location, Vector2 bgdelta , Image background, Image fill) {
-		super(background);
+	public Compteur(World world, float currentValue, float maxValue, Vector2 location, Vector2 bgdelta , Image background, Image fill) {
+		super(world, background);
 		this.globalDelta = new Vector2(0,0);
 		this.backgroundDelta = bgdelta;
 		this.fillSprite = fill;
@@ -43,8 +42,7 @@ public class Compteur extends GameObject{
 	}
 
 	@Override
-	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) throws SlickException
-	{
+	public void render(GameContainer container, StateBasedGame game, Graphics g, boolean useCamera) {
 		super.render(container, game, g, useCamera);
 
 		float sprh = 16;
@@ -58,7 +56,7 @@ public class Compteur extends GameObject{
 		{
 			if(useCamera)
 				for(float i=0; i<currentValue/maxValue; i+=0.1f)
-					g.drawImage(fillSprite, location.x - Camera.location.x + i*160 + backgroundDelta.x - sprw/2 + globalDelta.x, location.y +globalDelta.y  + backgroundDelta.y - Camera.location.y- sprh/2 -8);
+					g.drawImage(fillSprite, location.x - world.camera.location.x + i*160 + backgroundDelta.x - sprw/2 + globalDelta.x, location.y +globalDelta.y  + backgroundDelta.y - world.camera.location.y- sprh/2 -8);
 			else
 				for(float i=0; i<currentValue/maxValue; i+=0.1f)
 					g.drawImage(fillSprite, location.x + i*160 + backgroundDelta.x - sprw/2 + globalDelta.x, location.y +globalDelta.y + backgroundDelta.y - sprh/2-8);

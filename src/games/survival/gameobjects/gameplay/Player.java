@@ -2,11 +2,12 @@ package games.survival.gameobjects.gameplay;
 
 import java.util.ArrayList;
 
+import games.survival.World;
 import games.survival.gameobjects.GameObject;
 import games.survival.gameobjects.items.Items;
 
 public class Player extends GameObject {
-	public static ArrayList<Items> itemList = new ArrayList<Items>();
+	public ArrayList<Items> itemList = new ArrayList<Items>();
 	public float location;
 	public 	Compteur life;
 	public 	Compteur hunger;
@@ -14,7 +15,8 @@ public class Player extends GameObject {
 	public Items activatedWeapons;
 
 
-	public Player(ArrayList<Items> itemList,float location) {
+	public Player(World world, ArrayList<Items> itemList,float location) {
+		super(world);
 		this.activatedWeapons = null;
 		this.location = location;
 		/*this.life = new Compteur("life",100);
@@ -22,7 +24,7 @@ public class Player extends GameObject {
 		this.thirst = new Compteur("thirst",100);*/
 		}
 
-	public static void addItem(Items  Item) {
+	public void addItem(Items  Item) {
 		itemList.add(Item);
 	}
 
